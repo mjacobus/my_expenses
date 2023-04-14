@@ -4,6 +4,7 @@
 
 # Turn on dependency checks for this package
 enforce_dependencies: true
+enforce_privacy: true
 
 # Turn on privacy checks for this package
 # enforcing privacy is often not useful for the root package, because it would require defining a public interface
