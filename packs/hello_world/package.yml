@@ -17,5 +17,5 @@ enforce_privacy: true
 
 # A list of this package's dependencies
 # Note that packages in this list require their own `package.yml` file
-# dependencies:
-# - "packs/other_package"
+dependencies:
+- "." # because of application controller
