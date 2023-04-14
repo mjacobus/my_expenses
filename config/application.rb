@@ -24,10 +24,6 @@ module MyExpenses
     # config.time_zone = "Central Time (US & Canada)"
     # config.eager_load_paths << Rails.root.join("extras")
 
-    require Rails.root.join("packs/package_loader")
-    loader = PackageLoader.new(packages_folder: Rails.root.join("packs"))
-    loader.append_to(config.autoload_paths)
-
     config.generators do |generate|
       generate.helper false
       generate.assets false
