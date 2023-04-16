@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   draw(:hello_world)
+  draw(:social_login)
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  root "hello_world#index"
 end
