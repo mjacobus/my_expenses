@@ -31,8 +31,6 @@ RSpec.describe UserSessionService do
 
     context 'when user does not exist' do
       it 'creates an user' do
-        factories.users.create
-
         expect { perform }.to change(User, :count).by(1)
 
         expect(user.name).to eq('the-name')
