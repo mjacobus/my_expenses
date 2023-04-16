@@ -1,4 +1,4 @@
-# frozen_string_literal: trueJJ
+# frozen_string_literal: true
 
 module Controllers
   module Concerns
@@ -12,10 +12,9 @@ module Controllers
 
       private
 
-
       def require_authorization
         unless current_user
-          redirect_to('/', flash: { error: "Access Denied" })
+          redirect_to('/', flash: { error: 'Access Denied' })
         end
       end
 
