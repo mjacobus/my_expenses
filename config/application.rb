@@ -27,6 +27,7 @@ module MyExpenses
       generate.helper false
       generate.assets false
       generate.view_specs false
+      generate.fixture_replacement :fabrication, dir: "spec/fabricators"
     end
   end
 end
