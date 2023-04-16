@@ -31,6 +31,8 @@ RSpec.describe UserSessionService do
 
     context 'when user does not exist' do
       it 'creates an user' do
+        Fabricate(:user)
+
         expect { perform }.to change(Db::User, :count).by(1)
 
         expect(user.name).to eq('the-name')
