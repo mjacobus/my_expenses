@@ -7,5 +7,5 @@ enforce_dependencies: true
 
 # A list of this package's dependencies
 # Note that packages in this list require their own `package.yml` file
-dependencies:
-- "packs/user_sessions"
+# dependencies:
+# - "packs/user_sessions"
