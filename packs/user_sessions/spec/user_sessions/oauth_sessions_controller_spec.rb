@@ -2,11 +2,11 @@
 
 require 'rails_helper'
 
-RSpec.describe SessionsController do
-  let(:user_session_service) { instance_double(UserSessionService) }
+RSpec.describe UserSessions::OauthSessionsController, type: :controller do
+  let(:user_session_service) { instance_double(UserSessions::UserSessionService) }
 
   before do
-    allow(UserSessionService)
+    allow(UserSessions::UserSessionService)
       .to receive(:new).with(session: session)
       .and_return(user_session_service)
   end

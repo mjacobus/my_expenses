@@ -3,11 +3,11 @@
 require 'rails_helper'
 
 # rubocop:disable RSpec/MultipleMemoizedHelpers
-RSpec.describe UserSessionService do
+RSpec.describe UserSessions::UserSessionService do
   subject(:service) { described_class.new(session:, oauth_config_factory: factory) }
 
   let(:session) { {} }
-  let(:factory) { instance_double(OauthConfigFactory) }
+  let(:factory) { instance_double(UserSessions::OauthConfigFactory) }
   let(:user) { Db::User.last }
 
   describe '#create_from_oauth' do
@@ -19,7 +19,7 @@ RSpec.describe UserSessionService do
 
     let(:oauth_payload) { { payload: 'the-payload' } }
     let(:oauth_config) do
-      OauthConfig.new(
+      UserSessions::OauthConfig.new(
         name: 'the-name',
         uid: 'the-uid',
         email: 'the-email',
@@ -88,7 +88,7 @@ RSpec.describe UserSessionService do
         expect(user).to be_master
       end
     end
-  end
+    end
 
   describe '#current_user' do
     context 'when session id is present and user is enabled' do
@@ -114,7 +114,7 @@ RSpec.describe UserSessionService do
     it 'returns nil' do
       expect(service.current_user).to be_nil
     end
-  end
+    end
 
   describe '#destroy' do
     it 'destroys the user session' do

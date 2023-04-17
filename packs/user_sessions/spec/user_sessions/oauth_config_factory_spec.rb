@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe OauthConfigFactory do
+RSpec.describe UserSessions::OauthConfigFactory do
   subject(:service) { described_class.new }
 
   let(:oauth_payload) do
@@ -21,7 +21,7 @@ RSpec.describe OauthConfigFactory do
     it 'properly creates an oauth config' do
       config = service.from_env(oauth_payload)
 
-      expect(config).to be_a(OauthConfig)
+      expect(config).to be_a(UserSessions::OauthConfig)
       expect(config.provider).to eq('google_oauth2')
       expect(config.uid).to eq('the-uid')
       expect(config.name).to eq('the-name')

@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class ApplicationController < ActionController::Base
-  include Controllers::Concerns::SocialLoginMethods
+  include UserSessions::ControllerMethods
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_page404
 
