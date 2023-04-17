@@ -18,9 +18,25 @@ module MyExpenses
 
     config.middleware.use OmniAuth::Builder do
       if ENV['OAUTH_GOOGLE_KEY']
-        provider :google_oauth2, ENV['OAUTH_GOOGLE_KEY'], ENV['OAUTH_GOOGLE_SECRET']
+        provider :google_oauth2, ENV['OAUTH_GOOGLE_KEY'], ENV.fetch('OAUTH_GOOGLE_SECRET', nil)
       end
     end
+
+    paths = []
+    Rails.root.glob('packs/*/lib').each do |file|
+      if File.directory?(file)
+        paths << file
+      end
+
+      file = "#{file}/public"
+      if File.directory?(file)
+        paths << file
+      end
+    end
+
+    config.autoload_paths += paths
+
+    # config.autoload_paths += Dir
 
     # Configuration for the application, engines, and railties goes here.
     #
@@ -33,7 +49,7 @@ module MyExpenses
       generate.helper false
       generate.assets false
       generate.view_specs false
-      generate.fixture_replacement :fabrication, dir: "spec/fabricators"
+      generate.fixture_replacement :fabrication, dir: 'spec/fabricators'
     end
   end
 end
