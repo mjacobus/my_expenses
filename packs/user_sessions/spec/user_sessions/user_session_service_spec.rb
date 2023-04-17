@@ -88,7 +88,7 @@ RSpec.describe UserSessions::UserSessionService do
         expect(user).to be_master
       end
     end
-    end
+  end
 
   describe '#current_user' do
     context 'when session id is present and user is enabled' do
@@ -114,7 +114,7 @@ RSpec.describe UserSessions::UserSessionService do
     it 'returns nil' do
       expect(service.current_user).to be_nil
     end
-    end
+  end
 
   describe '#destroy' do
     it 'destroys the user session' do
