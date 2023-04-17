@@ -22,19 +22,11 @@ module MyExpenses
       end
     end
 
-    paths = []
-    Rails.root.glob('packs/*/lib').each do |file|
-      if File.directory?(file)
-        paths << file
-      end
+    paths = Rails.root.glob('packs/*/lib').map do |file|
+      ["#{file}/public", file.to_s]
+    end.flatten
 
-      file = "#{file}/public"
-      if File.directory?(file)
-        paths << file
-      end
-    end
-
-    config.autoload_paths += paths
+    config.autoload_paths += paths.select { |f| File.directory?(f) }
 
     # Configuration for the application, engines, and railties goes here.
     #
