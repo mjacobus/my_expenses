@@ -30,7 +30,6 @@ Layout/LineLength:
     - 'Gemfile'
     - 'db/seeds.rb'
     - 'app/components/**/*'
-   
 Style/AccessorGrouping:
   Enabled: false
 
@@ -42,6 +41,9 @@ Style/Documentation:
 
 Style/GuardClause:
   Enabled: false
+
+Style/HashSyntax:
+  Enabled: false # new hash ommitting syntax
 
 Style/IfUnlessModifier:
   Enabled: false

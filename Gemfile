@@ -48,6 +48,9 @@ gem 'tzinfo-data', platforms: %i[mingw mswin x64_mingw jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem 'bootsnap', require: false
 
+gem 'omniauth', '~> 1.9.2'
+gem 'omniauth-google-oauth2'
+
 # Use Sass to process CSS
 # gem "sassc-rails"
 
@@ -59,6 +62,7 @@ group :development, :test do
   gem 'debug', platforms: %i[mri mingw x64_mingw]
   gem 'dotenv-rails'
   gem 'fabrication'
+  gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
   gem 'rubocop-performance', require: false

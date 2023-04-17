@@ -1,0 +1,7 @@
+<h1>Home#index</h1>
+
+<% if current_user %>
+  <a href="/logout">Logout</a>
+<% else %>
+  <a href="/auth/google_oauth2">Login with Google</a>
+<% end %>

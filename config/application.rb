@@ -16,6 +16,18 @@ module MyExpenses
     # Initialize configuration defaults for originally generated Rails version.
     config.load_defaults 7.0
 
+    config.middleware.use OmniAuth::Builder do
+      if ENV['OAUTH_GOOGLE_KEY']
+        provider :google_oauth2, ENV['OAUTH_GOOGLE_KEY'], ENV.fetch('OAUTH_GOOGLE_SECRET', nil)
+      end
+    end
+
+    paths = Rails.root.glob('packs/*/lib').map do |file|
+      ["#{file}/public", file.to_s]
+    end.flatten
+
+    config.autoload_paths += paths.select { |f| File.directory?(f) }
+
     # Configuration for the application, engines, and railties goes here.
     #
     # These settings can be overridden in specific environments using the files
@@ -27,7 +39,7 @@ module MyExpenses
       generate.helper false
       generate.assets false
       generate.view_specs false
-      generate.fixture_replacement :fabrication, dir: "spec/fabricators"
+      generate.fixture_replacement :fabrication, dir: 'spec/fabricators'
     end
   end
 end
