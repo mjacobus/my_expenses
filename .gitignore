@@ -42,3 +42,5 @@
 
 # js stuff
 /node_modules/
+/dist/
+/.parcel-cache/
