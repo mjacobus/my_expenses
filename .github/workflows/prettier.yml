@@ -1,0 +1,24 @@
+name: Prettier
+on:
+  push:
+    branches: 
+      - main
+  pull_request:
+    branches:
+      - '*'
+jobs:
+  run_prettier:
+    name: "Check"
+    runs-on: ubuntu-latest
+    steps:
+    - uses: actions/checkout@v2
+    - name: 'Setup node'
+      uses: actions/setup-node@v2
+      with:
+        node-version: '14.18.3'
+    - name: "Yarn install"
+      run: |
+        sudo apt-get -yqq install libpq-dev
+        yarn install
+    - name: "Run prettier"
+      run: ./node_modules/.bin/prettier frontend app/javascript frontend
