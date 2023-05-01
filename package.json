@@ -5,6 +5,7 @@
     "webpack-cli": "^3.3.12"
   },
   "devDependencies": {
+    "prettier": "^2.8.8",
     "webpack-dev-server": "^3"
   },
   "engines": {
