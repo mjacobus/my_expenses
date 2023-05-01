@@ -39,3 +39,6 @@
 /.env.development.local
 /.env.test.local
 
+
+# js stuff
+/node_modules/
