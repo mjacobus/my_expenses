@@ -1,6 +1,15 @@
 import React from "react";
-import Link from "@mui/material/Link";
+import Button from "@mui/material/Button";
+import EmailIcon from "@mui/icons-material/Email";
 
 export default function LoginPage() {
-  return <Link href="/auth/google_oauth2">Login with your google account</Link>;
+  return (
+    <Button
+      variant="contained"
+      startIcon={<EmailIcon />}
+      href="/auth/google_oauth2"
+    >
+      Login with your google account
+    </Button>
+  );
 }
