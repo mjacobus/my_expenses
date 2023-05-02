@@ -1,8 +1,8 @@
 console.log("App js again");
 import "./app.css";
 
-function foo(y: number) {
+function foo(y: string) {
   console.log(y);
 }
 
-foo("bar");
+foo("foo typescript");
