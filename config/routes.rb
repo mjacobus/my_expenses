@@ -3,5 +3,7 @@
 Rails.application.routes.draw do
   draw(:social_login)
 
-  root "home#index"
+  root 'home#index'
+
+  get '*path', to: 'frontend#index'
 end
