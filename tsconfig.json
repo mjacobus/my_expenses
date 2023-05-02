@@ -17,7 +17,6 @@
     "noFallthroughCasesInSwitch": true,
     "module": "esnext",
     "resolveJsonModule": true,
-    "isolatedModules": true,
     "sourceMap": true,
     "target": "es5",
     "noEmit": true

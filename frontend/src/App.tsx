@@ -1,6 +1,6 @@
 import React from "react";
 import Alert from "@mui/material/Alert";
-import Navigation from "./components/MainNavigation.tsx";
+import Navigation from "./components/UserNavigation";
 
 import "./app.css";
 
