@@ -1,9 +1,6 @@
-// const webpackConfig = require('webpacker/config/webpack/test')
-const webpackConfig = {
-  // testEnvironmentOptions: {
-  //   testURL: "Some Url"
-  // }
-}
+// It should probably be this:
+// const webpackConfig = require('./config/webpack/test')
+const webpackConfig = {}
 const webpackConfigMerger = require('webpack-config-merger')
 
 module.exports = {
