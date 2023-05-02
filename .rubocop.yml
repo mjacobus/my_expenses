@@ -78,6 +78,9 @@ RSpec:
   Exclude:
     - 'spec/factories/**/*'
 
+RSpec/AnyInstance:
+  Enabled: false
+
 RSpec/ExampleLength:
   Max: 10
 

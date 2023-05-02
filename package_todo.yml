@@ -11,4 +11,5 @@ packs/user_sessions:
     violations:
     - dependency
     files:
+    - app/controllers/api/controller.rb
     - app/controllers/application_controller.rb

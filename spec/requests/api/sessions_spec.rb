@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Api::SessionController do
+RSpec.describe Api::SessionsController do
   describe 'GET /index' do
     context 'when user is logged in' do
       before do
@@ -13,6 +13,12 @@ RSpec.describe Api::SessionController do
         get '/api/session'
 
         expect(response).to be_successful
+        expect(json_response).to eq(
+          {
+            name: user.name,
+            email: user.email
+          }
+        )
       end
     end
   end
