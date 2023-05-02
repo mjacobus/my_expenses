@@ -1,4 +1,4 @@
-import "../../../frontend/src/app.js";
+import "../../../frontend/src/app";
 
 function sum(y: number, x: number) : number {
   return y + x;
