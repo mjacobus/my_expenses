@@ -16,7 +16,8 @@ RSpec.describe Api::SessionsController do
         expect(json_response).to eq(
           {
             name: user.name,
-            email: user.email
+            email: user.email,
+            avatar: user.avatar
           }
         )
       end
