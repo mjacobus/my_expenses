@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "jsx": "react",
     "declaration": false,
     "emitDecoratorMetadata": true,
     "experimentalDecorators": true,
@@ -8,7 +9,11 @@
     "moduleResolution": "node",
     "baseUrl": ".",
     "paths": {
-        "*": ["node_modules/*", "app/javascript/*"]
+        "*": [
+          "node_modules/*", 
+          "app/javascript/*",
+          "frontend/*"
+        ]
     },
     "sourceMap": true,
     "target": "es5",
