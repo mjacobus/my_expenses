@@ -8,12 +8,12 @@ class Api::Controller < ApplicationController
   private
 
   def render_page404(_error)
-    head status: 404
+    head :not_found
   end
 
   def require_authorization
     unless current_user
-      head status: 401
+      head :unauthorized
     end
   end
 end
