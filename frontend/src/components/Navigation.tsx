@@ -12,6 +12,7 @@ import Button from "@mui/material/Button";
 import Tooltip from "@mui/material/Tooltip";
 import MenuItem from "@mui/material/MenuItem";
 import AdbIcon from "@mui/icons-material/Adb";
+import UserData from "../types/UserData";
 
 function Navigation({
   userData,
@@ -23,7 +24,7 @@ function Navigation({
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
-  // TODO: Find out how to replace any. 
+  // TODO: Find out how to replace any.
   // React.MouseEvent does not work
   // MouseEvent does not work
   const handleOpenNavMenu = (event: any) => {
@@ -172,10 +173,4 @@ interface Page {
   text: string;
 }
 
-interface UserData {
-  name: string;
-  email: string;
-  avatar: string;
-}
-
-export { Page, UserData };
+export { Page };
