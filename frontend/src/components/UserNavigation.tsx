@@ -17,7 +17,7 @@ function UserNavigation() {
     const data = await api.fetchUserSession();
 
     if (!data) {
-      throw new Error("User is not logged in");
+      return (window.location.href = "/login");
     }
 
     setUserData(data);
