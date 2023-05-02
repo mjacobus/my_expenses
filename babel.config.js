@@ -15,7 +15,7 @@ module.exports = function(api) {
     )
   }
 
-  return {
+  const config = {
     presets: [
       isTestEnv && [
         '@babel/preset-env',
@@ -97,4 +97,8 @@ module.exports = function(api) {
       ]
     ].filter(Boolean)
   }
+
+  // console.log(config)
+  return config;
 }
+
