@@ -9,22 +9,21 @@
     "moduleResolution": "node",
     "allowSyntheticDefaultImports": true,
     "baseUrl": ".",
-    "paths": {
-        "*": [
-          "node_modules/*", 
-          "app/javascript/*",
-          "frontend/*"
-        ]
-    },
+    "allowJs": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "strict": true,
+    "forceConsistentCasingInFileNames": true,
+    "noFallthroughCasesInSwitch": true,
+    "module": "esnext",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
     "sourceMap": true,
     "target": "es5",
     "noEmit": true
   },
-  "exclude": [
-    "**/*.spec.ts",
-    "node_modules",
-    "vendor",
-    "public"
-  ],
-  "compileOnSave": false
+  "include": [
+    "app/javascript",
+    "frontend"
+  ]
 }
