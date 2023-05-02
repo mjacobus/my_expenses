@@ -1,0 +1,15 @@
+# test_runner.yml
+
+adapters:
+  rspec:
+    adapter: rspec
+    file_pattern: ".*_spec.rb"
+  jest:
+    adapter: custom
+    file_pattern: "frontend/.*.(spec|test).js"
+    command: "./node_modules/.bin/jest"
+    commands:
+      all: "{command}"
+      file: "{command} {file}"
+      # oops, jest does not really filter by line
+      line: "{command} {file}"
