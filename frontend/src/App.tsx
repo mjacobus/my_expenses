@@ -10,7 +10,7 @@ const App = function () {
   return (
     <React.Fragment>
       <Navigation />
-      <Alert severity="success">Hello World!</Alert>;
+      <Alert severity="success">Hello World!</Alert>
     </React.Fragment>
   );
 };
