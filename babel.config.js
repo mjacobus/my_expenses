@@ -37,6 +37,7 @@ module.exports = function(api) {
           exclude: ['transform-typeof-symbol']
         }
       ],
+      ['@babel/preset-typescript', { 'allExtensions': true, 'isTSX': true }],
       [
         '@babel/preset-react',
         {
