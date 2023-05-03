@@ -1,10 +1,17 @@
-import React from "react";
-import Navigation from "../../components/UserNavigation";
+import React, { useContext } from "react";
+import UserNavigation from "../../components/UserNavigation";
+import { Context as UserContext } from "../../contexts/userContext";
 
 export default function LoggedInLayout({ children }: { children: any }) {
+  const context = useContext(UserContext);
+
+  if (!context.userData) {
+    return <></>;
+  }
+
   return (
     <>
-      <Navigation />
+      <UserNavigation userData={context.userData} />
       {children}
     </>
   );
