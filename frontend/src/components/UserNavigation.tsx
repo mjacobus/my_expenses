@@ -1,7 +1,6 @@
-import React, { useState, useEffect } from "react";
+import React, { useState, useEffect, useContext } from "react";
 import Navigation, { Page } from "./Navigation";
-import api from "../utils/api";
-import UserData from "../types/UserData";
+import { Context as UserContext } from "../contexts/userContext";
 
 const pages: Page[] = [
   {
@@ -11,27 +10,13 @@ const pages: Page[] = [
 ];
 
 function UserNavigation() {
-  const [userData, setUserData] = useState<UserData | null>(null);
+  const context = useContext(UserContext);
 
-  async function fetchData() {
-    const data = await api.fetchUserSession();
-
-    if (!data) {
-      return (window.location.href = "/login");
-    }
-
-    setUserData(data);
-  }
-
-  useEffect(() => {
-    fetchData();
-  }, []);
-
-  if (!userData) {
+  if (!context.userData) {
     return <React.Fragment />;
   }
 
-  return <Navigation userData={userData} pages={pages} />;
+  return <Navigation userData={context.userData} pages={pages} />;
 }
 
 export default UserNavigation;
