@@ -1,6 +1,6 @@
-import React, { useState, useEffect, useContext } from "react";
+import React from "react";
 import Navigation, { Page } from "./Navigation";
-import { Context as UserContext } from "../contexts/userContext";
+import UserData from "../types/UserData";
 
 const pages: Page[] = [
   {
@@ -9,14 +9,8 @@ const pages: Page[] = [
   },
 ];
 
-function UserNavigation() {
-  const context = useContext(UserContext);
-
-  if (!context.userData) {
-    return <React.Fragment />;
-  }
-
-  return <Navigation userData={context.userData} pages={pages} />;
+function UserNavigation({ userData }: { userData: UserData }) {
+  return <Navigation userData={userData} pages={pages} />;
 }
 
 export default UserNavigation;
