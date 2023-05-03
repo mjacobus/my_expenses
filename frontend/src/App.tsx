@@ -3,6 +3,7 @@ import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import withLayout from "./utils/withLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { Provider as UserContextProvider } from "./contexts/userContext";
 
 import "./app.css";
 
@@ -18,6 +19,12 @@ const router = createBrowserRouter([
 ]);
 
 function Router() {
-  return <RouterProvider router={router} />;
+  return (
+    <React.StrictMode>
+      <UserContextProvider>
+        <RouterProvider router={router} />
+      </UserContextProvider>
+    </React.StrictMode>
+  );
 }
 export default Router;
