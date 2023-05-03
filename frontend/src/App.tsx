@@ -1,6 +1,7 @@
 import React from "react";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
+import ProfilePage from "./pages/ProfilePage";
 import withLayout from "./utils/withLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider as UserContextProvider } from "./contexts/userContext";
@@ -15,6 +16,10 @@ const router = createBrowserRouter([
   {
     path: "/",
     element: withLayout(<HomePage />),
+  },
+  {
+    path: "/profile",
+    element: withLayout(<ProfilePage />),
   },
 ]);
 
