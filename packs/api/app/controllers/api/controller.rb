@@ -7,6 +7,11 @@ class Api::Controller < ActionController::Base # rubocop:disable Rails/Applicati
 
   private
 
+  def respond_with_endpoint(endpoint)
+    response = endpoint.create_response(request: request)
+    render json: response.data, status: response.status, headers: response.headers
+  end
+
   def render_page404(_error)
     head :not_found
   end
