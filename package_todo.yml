@@ -6,6 +6,19 @@
 #
 # bin/packwerk update-todo
 ---
+packs/api:
+  "::Api::Endpoint":
+    violations:
+    - dependency
+    - privacy
+    files:
+    - spec/support/request_spec_helper.rb
+  "::Api::JsonResponse":
+    violations:
+    - dependency
+    - privacy
+    files:
+    - spec/support/request_spec_helper.rb
 packs/user_sessions:
   "::UserSessions::ControllerMethods":
     violations:
