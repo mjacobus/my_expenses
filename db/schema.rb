@@ -10,7 +10,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_04_16_183436) do
+ActiveRecord::Schema[7.0].define(version: 2023_05_04_120332) do
+  create_table "expenses", charset: "utf8mb4", force: :cascade do |t|
+    t.string "description"
+    t.integer "amount"
+    t.datetime "expensed_at"
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_expenses_on_user_id"
+  end
+
   create_table "users", charset: "utf8mb4", force: :cascade do |t|
     t.string "name"
     t.string "email"
@@ -24,4 +34,5 @@ ActiveRecord::Schema[7.0].define(version: 2023_04_16_183436) do
     t.index ["oauth_provider", "oauth_uid"], name: "index_users_on_oauth_provider_and_oauth_uid", unique: true
   end
 
+  add_foreign_key "expenses", "users"
 end
