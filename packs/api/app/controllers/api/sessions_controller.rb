@@ -2,10 +2,8 @@
 
 class Api::SessionsController < Api::Controller
   def show
-    render json: {
-      name: current_user.name,
-      email: current_user.email,
-      avatar: current_user.avatar
-    }
+    respond_with_endpoint(
+      Api::Sessions::ShowEndpoint.new(actor: current_user)
+    )
   end
 end
