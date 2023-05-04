@@ -91,6 +91,7 @@ RSpec/ExpectChange:
 RSpec/FilePath:
   Exclude:
     - 'spec/requests/**/*'
+    - 'packs/*/spec/requests/**/*'
 
 RSpec/MultipleExpectations:
   Enabled: false
