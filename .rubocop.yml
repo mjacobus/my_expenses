@@ -1,4 +1,5 @@
 require:
+  - rubocop-packs
   - rubocop-performance
   - rubocop-rails
   - rubocop-rspec
@@ -103,6 +104,9 @@ RSpec/NestedGroups:
 
 # while that is a good rule, AR objects can't be properly instance_double'd
 RSpec/VerifiedDoubles:
+  Enabled: false
+
+Sorbet/FalseSigil:
   Enabled: false
 
 AllCops:
