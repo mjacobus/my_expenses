@@ -33,6 +33,7 @@ gem 'redis', '~> 4.0'
 gem 'packs-rails'
 gem 'packwerk'
 gem 'packwerk-extensions'
+gem 'use_packs'
 
 # frontend
 gem 'webpacker'
