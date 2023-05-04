@@ -34,6 +34,7 @@ gem 'packs-rails'
 gem 'packwerk'
 gem 'packwerk-extensions'
 gem 'use_packs'
+# gem pack_stats # not needed yet
 
 # frontend
 gem 'webpacker'
