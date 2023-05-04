@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class Api::Controller < ApplicationController
+class Api::Controller < ActionController::Base # rubocop:disable Rails/ApplicationController
   include UserSessions::ControllerMethods
 
   rescue_from ActiveRecord::RecordNotFound, with: :render_page404

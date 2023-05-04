@@ -6,12 +6,6 @@
 #
 # bin/packwerk update-todo
 ---
-".":
-  "::ApplicationController":
-    violations:
-    - dependency
-    files:
-    - packs/api/app/controllers/api/controller.rb
 packs/user_sessions:
   "::UserSessions::ControllerMethods":
     violations:
