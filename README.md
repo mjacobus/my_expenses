@@ -21,3 +21,8 @@ docker-compose up
 ./bin/rails db:migrate
 ./bin/rails server
 ```
+
+## Caveats
+
+- We use packwerk
+- We have [endpoints classes](https://github.com/mjacobus/my_expenses/blob/main/packs/api/README.md)
