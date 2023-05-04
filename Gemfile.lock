@@ -186,6 +186,8 @@ GEM
       sorbet-runtime
       zeitwerk
     parallel (1.22.1)
+    parse_packwerk (0.19.1)
+      sorbet-runtime
     parser (3.2.1.0)
       ast (~> 2.4.1)
     public_suffix (5.0.1)
@@ -263,6 +265,13 @@ GEM
       parser (>= 3.2.1.0)
     rubocop-capybara (2.17.1)
       rubocop (~> 1.41)
+    rubocop-packs (0.0.38)
+      activesupport
+      packs
+      parse_packwerk
+      rubocop
+      rubocop-sorbet
+      sorbet-runtime
     rubocop-performance (1.16.0)
       rubocop (>= 1.7.0, < 2.0)
       rubocop-ast (>= 0.4.0)
@@ -273,6 +282,8 @@ GEM
     rubocop-rspec (2.18.1)
       rubocop (~> 1.33)
       rubocop-capybara (~> 2.17)
+    rubocop-sorbet (0.7.0)
+      rubocop (>= 0.90.0)
     ruby-progressbar (1.11.0)
     ruby2_keywords (0.0.5)
     rubyzip (2.3.2)
@@ -353,6 +364,7 @@ DEPENDENCIES
   redis (~> 4.0)
   rspec-rails (~> 6.0.0)
   rubocop
+  rubocop-packs
   rubocop-performance
   rubocop-rails
   rubocop-rspec
