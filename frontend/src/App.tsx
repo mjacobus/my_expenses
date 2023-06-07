@@ -2,6 +2,7 @@ import React from "react";
 import LoginPage from "./pages/LoginPage";
 import HomePage from "./pages/HomePage";
 import ProfilePage from "./pages/ProfilePage";
+import ExpensesIndexPage from "./pages/Expenses/IndexPage";
 import withLayout from "./utils/withLayout";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import { Provider as UserContextProvider } from "./contexts/userContext";
@@ -20,6 +21,10 @@ const router = createBrowserRouter([
   {
     path: "/profile",
     element: withLayout(<ProfilePage />),
+  },
+  {
+    path: "/expenses",
+    element: withLayout(<ExpensesIndexPage />),
   },
 ]);
 
