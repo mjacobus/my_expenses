@@ -19,7 +19,9 @@ cp .env.example .env
 docker-compose up
 ./bin/rails db:create
 ./bin/rails db:migrate
-./bin/rails server
+./bin/rails db:seed
+./bin/webpack-dev-server # start frontend
+./bin/rails server       # start backend
 ```
 
 ## Caveats
