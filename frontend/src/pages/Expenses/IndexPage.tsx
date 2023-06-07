@@ -1,24 +1,31 @@
 import React, { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
+import Table from "@mui/material/Table";
+import TableBody from "@mui/material/TableBody";
+import TableCell from "@mui/material/TableCell";
+import TableRow from "@mui/material/TableRow";
 import api from "../../utils/api";
 
 function ExpenseItem({ item }) {
   return (
-    <li>
-      <span> {item.description}</span>
-      <span> {item.amount}</span>
-      <span> {item.expensed_at}</span>
-    </li>
+    <TableRow>
+      <TableCell>{item.id}</TableCell>
+      <TableCell>{item.descripiton}</TableCell>
+      <TableCell>{item.amount}</TableCell>
+      <TableCell>{item.expensed_at}</TableCell>
+    </TableRow>
   );
 }
 
 function Expenses({ expenses }) {
   return (
-    <ul>
-      {expenses.map((expense) => (
-        <ExpenseItem item={expense} key={expense.id} />
-      ))}
-    </ul>
+    <Table>
+      <TableBody>
+        {expenses.map((expense) => (
+          <ExpenseItem item={expense} key={expense.id} />
+        ))}
+      </TableBody>
+    </Table>
   );
 }
 
