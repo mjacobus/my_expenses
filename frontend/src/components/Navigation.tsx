@@ -20,6 +20,7 @@ import ListItemText from "@mui/material/ListItemText";
 import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
 import AccountBoxIcon from "@mui/icons-material/AccountBox";
 import HomeIcon from "@mui/icons-material/Home";
+import UserData from "../types/UserData";
 
 const drawerWidth = 240;
 
@@ -68,7 +69,13 @@ const DrawerHeader = styled("div")(({ theme }) => ({
   justifyContent: "flex-end",
 }));
 
-export default function PersistentDrawerLeft(props) {
+export default function PersistentDrawerLeft({
+  children,
+  userData,
+}: {
+  children: any;
+  userData: UserData;
+}) {
   const navigate = useNavigate();
 
   const navigateTo = (url) => {
@@ -78,7 +85,7 @@ export default function PersistentDrawerLeft(props) {
     };
   };
   const theme = useTheme();
-  const [open, setOpen] = React.useState(true);
+  const [open, setOpen] = React.useState(false);
 
   const handleDrawerOpen = () => {
     setOpen(true);
@@ -159,7 +166,7 @@ export default function PersistentDrawerLeft(props) {
       </Drawer>
       <Main open={open}>
         <DrawerHeader />
-        {props.children}
+        {children}
       </Main>
     </Box>
   );
