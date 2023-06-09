@@ -2,8 +2,9 @@ import React, { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import api from "../../utils/api";
 import DataGrid from "../../components/DataGrid";
+import Expense from "../../types/Expense";
 
-function Expenses({ expenses }) {
+function Expenses({ expenses }: { expenses: Expense[] }) {
   const rows = expenses.map((expense) => ({
     key: expense.id,
     values: [
@@ -22,7 +23,7 @@ function Expenses({ expenses }) {
   return <DataGrid rows={rows} headers={headers} />;
 }
 
-function Page({ children }) {
+function Page({ children }: { children: React.ReactNode }) {
   return (
     <>
       <h1>Minhas despesas</h1>
@@ -32,12 +33,14 @@ function Page({ children }) {
 }
 
 export default function IndexPage() {
-  const [expenses, setExpenses] = useState([]);
+  const [expenses, setExpenses] = useState<Expense[]>([]);
   const [loading, setLoading] = useState(true);
 
   const fetchData = async () => {
     const response = await api.fetchExpenses();
-    setExpenses(response.data);
+    if (response) {
+      setExpenses(response.data);
+    }
     setLoading(false);
   };
 
