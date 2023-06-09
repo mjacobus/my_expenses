@@ -1,32 +1,25 @@
 import React, { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
-import Table from "@mui/material/Table";
-import TableBody from "@mui/material/TableBody";
-import TableCell from "@mui/material/TableCell";
-import TableRow from "@mui/material/TableRow";
 import api from "../../utils/api";
-
-function ExpenseItem({ item }) {
-  return (
-    <TableRow>
-      <TableCell>{item.id}</TableCell>
-      <TableCell>{item.descripiton}</TableCell>
-      <TableCell>{item.amount}</TableCell>
-      <TableCell>{item.expensed_at}</TableCell>
-    </TableRow>
-  );
-}
+import DataGrid from "../../components/DataGrid";
 
 function Expenses({ expenses }) {
-  return (
-    <Table>
-      <TableBody>
-        {expenses.map((expense) => (
-          <ExpenseItem item={expense} key={expense.id} />
-        ))}
-      </TableBody>
-    </Table>
-  );
+  const rows = expenses.map((expense) => ({
+    key: expense.id,
+    values: [
+      expense.id,
+      expense.description,
+      expense.amount,
+      expense.expensed_at,
+    ],
+  }));
+  const headers = [
+    {
+      key: "header",
+      values: ["ID", "Description", "Amount", "Expensed At"],
+    },
+  ];
+  return <DataGrid rows={rows} headers={headers} />;
 }
 
 function Page({ children }) {
