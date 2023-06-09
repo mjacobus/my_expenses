@@ -5,7 +5,7 @@ import UserData from "../types/UserData";
 const pages: Page[] = [
   {
     text: "Minhas despesas",
-    href: "/despesas",
+    href: "/expenses",
   },
 ];
 

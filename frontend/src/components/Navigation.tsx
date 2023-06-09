@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useNavigate, Link } from "react-router-dom";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
@@ -21,6 +22,7 @@ function Navigation({
   userData: UserData;
   pages: Page[];
 }) {
+  const navigate = useNavigate();
   const [anchorElNav, setAnchorElNav] = useState(null);
   const [anchorElUser, setAnchorElUser] = useState(null);
 
@@ -34,7 +36,7 @@ function Navigation({
     setAnchorElUser(event.currentTarget);
   };
 
-  const handleCloseNavMenu = () => {
+  const handleCloseNavMenu = (e) => {
     setAnchorElNav(null);
   };
 
@@ -95,7 +97,15 @@ function Navigation({
               }}
             >
               {pages.map((page: Page) => (
-                <MenuItem key={page.href} onClick={handleCloseNavMenu}>
+                <MenuItem
+                  key={page.href}
+                  href={page.href}
+                  onClick={(e) => {
+                    e.preventDefault();
+                    navigate(page.href);
+                    handleCloseNavMenu();
+                  }}
+                >
                   <Typography textAlign="center">{page.text}</Typography>
                 </MenuItem>
               ))}
@@ -124,7 +134,12 @@ function Navigation({
             {pages.map((page: Page) => (
               <Button
                 key={page.href}
-                onClick={handleCloseNavMenu}
+                href={page.href}
+                onClick={(e) => {
+                  e.preventDefault();
+                  navigate(page.href);
+                  handleCloseNavMenu();
+                }}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page.text}
