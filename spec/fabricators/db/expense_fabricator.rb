@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 Fabricator(:expense, from: 'Db::Expense') do
-  description 'MyString'
-  amount      1
-  expensed_at '2023-05-04 09:03:32'
+  description { Faker::Commerce.product_name }
+  amount      { Faker::Commerce.price * 100 }
+  expensed_at { Faker::Date.between(from: 20.days.ago, to: Time.zone.today) }
   user
 end
