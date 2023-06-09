@@ -9,8 +9,8 @@ const pages: Page[] = [
   },
 ];
 
-function UserNavigation({ userData }: { userData: UserData }) {
-  return <Navigation userData={userData} pages={pages} />;
+function UserNavigation({ userData, children }: { userData: UserData }) {
+  return <Navigation userData={userData} pages={pages} children={children} />;
 }
 
 export default UserNavigation;
