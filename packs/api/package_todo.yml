@@ -6,6 +6,13 @@
 #
 # bin/packwerk update-todo
 ---
+packs/expenses:
+  "::Db::Expense":
+    violations:
+    - dependency
+    - privacy
+    files:
+    - packs/api/lib/api/expenses/index_endpoint.rb
 packs/user_sessions:
   "::UserSessions::ControllerMethods":
     violations:

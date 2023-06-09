@@ -19,6 +19,13 @@ packs/api:
     - privacy
     files:
     - spec/support/request_spec_helper.rb
+packs/expenses:
+  "::Db::Expense":
+    violations:
+    - dependency
+    - privacy
+    files:
+    - db/seeds.rb
 packs/user_sessions:
   "::UserSessions::ControllerMethods":
     violations:
