@@ -12,8 +12,9 @@ export default function LoggedInLayout({ children }: { children: any }) {
 
   return (
     <>
-      <UserNavigation userData={context.userData} />
-      <Container>{children}</Container>
+      <UserNavigation userData={context.userData}>
+        <Container>{children}</Container>
+      </UserNavigation>
     </>
   );
 }
