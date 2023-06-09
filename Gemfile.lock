@@ -109,6 +109,8 @@ GEM
       railties (>= 3.2)
     erubi (1.12.0)
     fabrication (2.30.0)
+    faker (3.2.0)
+      i18n (>= 1.8.11, < 2)
     faraday (2.7.4)
       faraday-net_http (>= 2.0, < 3.1)
       ruby2_keywords (>= 0.0.4)
@@ -391,6 +393,7 @@ DEPENDENCIES
   debug
   dotenv-rails
   fabrication
+  faker
   jbuilder
   mysql2 (~> 0.5)
   omniauth (~> 1.9.2)
