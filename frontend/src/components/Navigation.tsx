@@ -1,25 +1,27 @@
 import * as React from "react";
-import { useNavigate } from "react-router-dom";
-import { styled, useTheme } from "@mui/material/styles";
+import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
+import AccountBoxIcon from "@mui/icons-material/AccountBox";
+import Avatar from "@mui/material/Avatar";
 import Box from "@mui/material/Box";
-import Drawer from "@mui/material/Drawer";
-import CssBaseline from "@mui/material/CssBaseline";
-import MuiAppBar from "@mui/material/AppBar";
-import Toolbar from "@mui/material/Toolbar";
-import List from "@mui/material/List";
-import Typography from "@mui/material/Typography";
-import Divider from "@mui/material/Divider";
-import IconButton from "@mui/material/IconButton";
-import MenuIcon from "@mui/icons-material/Menu";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import CssBaseline from "@mui/material/CssBaseline";
+import Divider from "@mui/material/Divider";
+import Drawer from "@mui/material/Drawer";
+import HomeIcon from "@mui/icons-material/Home";
+import IconButton from "@mui/material/IconButton";
+import List from "@mui/material/List";
 import ListItem from "@mui/material/ListItem";
 import ListItemButton from "@mui/material/ListItemButton";
 import ListItemIcon from "@mui/material/ListItemIcon";
 import ListItemText from "@mui/material/ListItemText";
-import AccountBalanceIcon from "@mui/icons-material/AccountBalance";
-import AccountBoxIcon from "@mui/icons-material/AccountBox";
-import HomeIcon from "@mui/icons-material/Home";
+import MenuIcon from "@mui/icons-material/Menu";
+import MuiAppBar from "@mui/material/AppBar";
+import Toolbar from "@mui/material/Toolbar";
+import Typography from "@mui/material/Typography";
+import { styled, useTheme } from "@mui/material/styles";
+import { useNavigate } from "react-router-dom";
+
 import UserData from "../types/UserData";
 
 const drawerWidth = 240;
@@ -120,6 +122,13 @@ export default function PersistentDrawerLeft({
           <Typography variant="h6" noWrap component="div">
             My Expenses
           </Typography>
+          <Box sx={{ flexGrow: 1 }}></Box>
+          <Box sx={{ flexGrow: 0 }}>
+            <span>{userData.name} </span>
+            <IconButton onClick={() => {}} sx={{ p: 0 }}>
+              <Avatar alt={userData.name} src={userData.avatar} />
+            </IconButton>
+          </Box>
         </Toolbar>
       </AppBar>
       <Drawer
