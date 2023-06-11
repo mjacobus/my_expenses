@@ -25,6 +25,7 @@ import UserData from "../types/UserData";
 const drawerWidth = 240;
 
 const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
+  // @ts-ignore
   ({ theme, open }) => ({
     flexGrow: 1,
     padding: theme.spacing(3),
@@ -45,20 +46,25 @@ const Main = styled("main", { shouldForwardProp: (prop) => prop !== "open" })(
 
 const AppBar = styled(MuiAppBar, {
   shouldForwardProp: (prop) => prop !== "open",
-})(({ theme, open }) => ({
-  transition: theme.transitions.create(["margin", "width"], {
-    easing: theme.transitions.easing.sharp,
-    duration: theme.transitions.duration.leavingScreen,
-  }),
-  ...(open && {
-    width: `calc(100% - ${drawerWidth}px)`,
-    marginLeft: `${drawerWidth}px`,
+})(
+  (
+    // @ts-ignore
+    { theme, open }
+  ) => ({
     transition: theme.transitions.create(["margin", "width"], {
-      easing: theme.transitions.easing.easeOut,
-      duration: theme.transitions.duration.enteringScreen,
+      easing: theme.transitions.easing.sharp,
+      duration: theme.transitions.duration.leavingScreen,
     }),
-  }),
-}));
+    ...(open && {
+      width: `calc(100% - ${drawerWidth}px)`,
+      marginLeft: `${drawerWidth}px`,
+      transition: theme.transitions.create(["margin", "width"], {
+        easing: theme.transitions.easing.easeOut,
+        duration: theme.transitions.duration.enteringScreen,
+      }),
+    }),
+  })
+);
 
 const DrawerHeader = styled("div")(({ theme }) => ({
   display: "flex",
@@ -78,8 +84,9 @@ export default function PersistentDrawerLeft({
 }) {
   const navigate = useNavigate();
 
-  const navigateTo = (url) => {
-    return (e) => {
+  const navigateTo = (url: string) => {
+    // set e type to the event raised by a link click
+    return (e: React.MouseEvent) => {
       e.preventDefault();
       navigate(url);
     };
@@ -98,6 +105,7 @@ export default function PersistentDrawerLeft({
   return (
     <Box sx={{ display: "flex" }}>
       <CssBaseline />
+      {/* @ts-ignore */}
       <AppBar position="fixed" open={open}>
         <Toolbar>
           <IconButton
@@ -164,6 +172,7 @@ export default function PersistentDrawerLeft({
           </ListItem>
         </List>
       </Drawer>
+      {/* @ts-ignore */}
       <Main open={open}>
         <DrawerHeader />
         {children}
