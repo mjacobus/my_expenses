@@ -125,6 +125,7 @@ GEM
       activesupport (>= 5.0.0)
     json (2.6.3)
     jwt (2.7.0)
+    koine-attributes (1.2.4)
     loofah (2.19.1)
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
@@ -395,6 +396,7 @@ DEPENDENCIES
   fabrication
   faker
   jbuilder
+  koine-attributes
   mysql2 (~> 0.5)
   omniauth (~> 1.9.2)
   omniauth-google-oauth2

@@ -36,6 +36,8 @@ gem 'packwerk-extensions'
 gem 'use_packs'
 # gem pack_stats # not needed yet
 
+gem 'koine-attributes'
+
 # frontend
 gem 'webpacker'
 
