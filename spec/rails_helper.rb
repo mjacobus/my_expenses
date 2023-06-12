@@ -65,4 +65,6 @@ RSpec.configure do |config|
 
   config.include RequestSpecHelper, type: :request
   config.include EndpointSpecHelper, type: :endpoint
+
+  config.include ActiveSupport::Testing::TimeHelpers
 end
