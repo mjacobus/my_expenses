@@ -43,4 +43,70 @@ RSpec.describe Expenses::ExpensesQuery do
       expect(mutated.to_date).to eq('to-date')
     end
   end
+
+  describe 'with_limit' do
+    it 'maxes to max limit' do
+      mutated = query.with_limit(1000)
+
+      expect(mutated.limit).to eq(100)
+    end
+
+    it 'has a minimun of one' do
+      mutated = query.with_limit(1)
+
+      expect(mutated.limit).to eq(1)
+    end
+
+    it 'coerces value' do
+      mutated = query.with_limit('2-and-three')
+
+      expect(mutated.limit).to eq(2)
+    end
+
+    it 'uses default if number does not make any sence' do
+      mutated = query.with_limit('nonsense')
+
+      expect(mutated.limit).to eq(100)
+    end
+  end
+
+  describe 'with_page' do
+    it 'has a minimun of one' do
+      mutated = query.with_page(0)
+
+      expect(mutated.page).to eq(1)
+    end
+
+    it 'can be any positive number' do
+      mutated = query.with_page(10)
+
+      expect(mutated.page).to eq(10)
+    end
+  end
+
+  describe 'offset' do
+    it 'is zero if page is one' do
+      mutated = query.with_page(1)
+
+      expect(mutated.offset).to eq(0)
+    end
+
+    it 'returns 100 when limit is 100 and page is 2' do
+      mutated = query.with_page(2)
+
+      expect(mutated.offset).to eq(100)
+    end
+
+    it 'returns 200 when limit is 100 and page is 3' do
+      mutated = query.with_page(3)
+
+      expect(mutated.offset).to eq(200)
+    end
+
+    it 'returns 50 when limit is 50 and page is 2' do
+      mutated = query.with_page(2).with_limit(50)
+
+      expect(mutated.offset).to eq(50)
+    end
+  end
 end
