@@ -68,6 +68,7 @@ group :development, :test do
   gem 'dotenv-rails'
   gem 'fabrication'
   gem 'faker'
+  gem 'object_comparator'
   gem 'rails-controller-testing'
   gem 'rspec-rails', '~> 6.0.0'
   gem 'rubocop', require: false
