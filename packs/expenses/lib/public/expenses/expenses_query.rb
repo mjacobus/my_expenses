@@ -7,9 +7,39 @@ module Expenses
     attr_reader :not_label_ids
     attr_reader :from_date
     attr_reader :to_date
+    attr_reader :max_limit
+    attr_reader :limit
+    attr_reader :page
 
     def initialize
+      @max_limit = 100
+      @limit = 100
+      @page = 1
       freeze
+    end
+
+    def with_limit(limit)
+      limit = limit.to_i
+
+      if limit < 1 || limit > max_limit
+        limit = max_limit
+      end
+
+      with { |q| q.limit = limit }
+    end
+
+    def with_page(page)
+      page = page.to_i
+
+      unless page.positive?
+        page = 1
+      end
+
+      with { |q| q.page = page }
+    end
+
+    def offset
+      (page - 1) * limit
     end
 
     def with_owner_id(id)
@@ -39,6 +69,9 @@ module Expenses
     attr_writer :not_label_ids
     attr_writer :from_date
     attr_writer :to_date
+    attr_writer :limit
+    attr_writer :max_limit
+    attr_writer :page
 
     private
 

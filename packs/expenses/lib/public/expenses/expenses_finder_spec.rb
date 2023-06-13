@@ -20,6 +20,34 @@ RSpec.describe Expenses::ExpensesFinder do
       expect(result.data).to be_equal_to([from_ar(expected)])
       expect(result.total).to eq(1)
     end
+
+    it 'filters expenses by from_date' do
+      travel_to(Time.zone.local(2020, 10, 1)) do
+        expected = Fabricate(:expense, expensed_at: 1.day.from_now)
+        _other = Fabricate(:expense, expensed_at: 3.days.ago)
+
+        query = base.with_from_date('2020-10-01 00:00:00')
+
+        result = finder.by_query(query)
+
+        expect(result.total).to eq(1)
+        expect(result.data).to be_equal_to([from_ar(expected)])
+      end
+    end
+
+    it 'filters expenses by to_date' do
+      travel_to(Time.zone.local(2020, 10, 1)) do
+        expected = Fabricate(:expense, expensed_at: 1.day.ago)
+        _other = Fabricate(:expense, expensed_at: 3.days.from_now)
+
+        query = base.with_to_date('2020-10-01 00:00:00')
+
+        result = finder.by_query(query)
+
+        expect(result.total).to eq(1)
+        expect(result.data).to be_equal_to([from_ar(expected)])
+      end
+    end
   end
 
   def from_ar(record)

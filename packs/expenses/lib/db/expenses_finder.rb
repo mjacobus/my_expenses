@@ -10,6 +10,22 @@ module Db
       new(scope.where(user_id: user_id))
     end
 
+    def with_expensed_at_from(date)
+      new(scope.where('expensed_at >= ?', date))
+    end
+
+    def with_expensed_at_to(date)
+      new(scope.where('expensed_at <= ?', date))
+    end
+
+    def with_limit(limit)
+      new(scope.limit(limit))
+    end
+
+    def with_offset(offset)
+      new(scope.offset(offset))
+    end
+
     def to_a
       ArPlucker.new.pluck(scope, fields: fields)
     end
