@@ -18,17 +18,12 @@ RSpec.describe Expenses::ExpensesFinder do
       result = finder.by_query(query)
 
       expect(result.data).to be_equal_to([from_ar(expected)])
+      expect(result.total).to eq(1)
     end
   end
 
   def from_ar(record)
-    attributes = record.attributes.symbolize_keys.slice(
-      :id,
-      :description,
-      :amount,
-      :created_at,
-      :updated_at
-    )
-    Expenses::Expense.new(attributes)
+    attributes = %i[id description amount created_at updated_at]
+    Expenses::Expense.new(record.attributes.symbolize_keys.slice(*attributes))
   end
 end
