@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-module Expenses
+module Db
   class ArPlucker
     def pluck(query, fields: [])
       data = query.pluck(*fields)

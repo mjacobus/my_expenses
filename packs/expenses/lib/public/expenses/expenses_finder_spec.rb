@@ -11,7 +11,7 @@ RSpec.describe Expenses::ExpensesFinder do
     it 'filters expenses by owner' do
       owner = Fabricate(:user)
       expected = Fabricate(:expense, user: owner)
-      _other_expense = Fabricate(:expense)
+      _other = Fabricate(:expense)
 
       query = base.with_owner_id(owner.id)
 

@@ -2,7 +2,7 @@
 
 require 'rails_helper'
 
-RSpec.describe Expenses::ArPlucker do
+RSpec.describe Db::ArPlucker do
   subject(:plucker) { described_class.new }
 
   let(:query) { Db::User.limit(1) }

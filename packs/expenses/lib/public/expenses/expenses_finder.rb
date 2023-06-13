@@ -4,25 +4,19 @@ module Expenses
   class ExpensesFinder
     class Result
       attr_reader :data
+      attr_reader :total
 
-      def initialize(data)
+      def initialize(data, total)
         @data = data
+        @total = total
       end
     end
 
     def by_query(query)
-      result = Db::Expense.where(user_id: query.owner_id)
-      result = ArPlucker.new.pluck(result, fields: fields).map do |attrs|
-        Expense.new(attrs)
-      end
-
-      Result.new(result)
-    end
-
-    private
-
-    def fields
-      %i[id description amount created_at updated_at]
+      finder = Db::ExpensesFinder.new
+      finder = finder.with_user_id(query.owner_id)
+      data = finder.to_a.map { |attrs| Expense.new(attrs) }
+      Result.new(data, finder.count)
     end
   end
 end
