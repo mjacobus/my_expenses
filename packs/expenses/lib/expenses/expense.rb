@@ -5,6 +5,7 @@ module Expenses
     include Koine::Attributes
 
     attributes(initializer: true) do
+      attribute :id, :integer
       attribute :description, :string
       attribute :amount, :integer
       attribute :created_at, :time
