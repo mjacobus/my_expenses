@@ -23,7 +23,7 @@ module Expenses
       end
 
       data = finder.to_a.map { |attrs| Expense.new(attrs) }
-      Result.new(data, finder.count)
+      Result.new(data, total_records: finder.count, limit: query.limit)
     end
     # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
   end
