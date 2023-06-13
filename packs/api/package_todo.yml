@@ -7,12 +7,33 @@
 # bin/packwerk update-todo
 ---
 packs/expenses:
-  "::Db::Expense":
+  "::Expenses::Expense":
+    violations:
+    - dependency
+    - privacy
+    files:
+    - packs/api/spec/lib/api/expenses/index_response_spec.rb
+  "::Expenses::ExpensesFinder":
     violations:
     - dependency
     - privacy
     files:
     - packs/api/lib/api/expenses/index_endpoint.rb
+    - packs/api/lib/api/expenses/index_endpoint_spec.rb
+  "::Expenses::ExpensesFinder::Result":
+    violations:
+    - dependency
+    - privacy
+    files:
+    - packs/api/lib/api/expenses/index_endpoint_spec.rb
+    - packs/api/spec/lib/api/expenses/index_response_spec.rb
+  "::Expenses::ExpensesQuery":
+    violations:
+    - dependency
+    - privacy
+    files:
+    - packs/api/lib/api/expenses/index_endpoint.rb
+    - packs/api/lib/api/expenses/index_endpoint_spec.rb
 packs/user_sessions:
   "::UserSessions::ControllerMethods":
     violations:

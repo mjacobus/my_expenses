@@ -6,9 +6,8 @@ module Expenses
       @db_finder = db_finder
     end
 
-    # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
-    def by_query(query)
-      finder = @db_finder.with_limit(query.limit).with_offset(query.offset)
+    def by_query(query) # rubocop:disable Metrics/MethodLength, Metrics/AbcSize
+      finder = @db_finder
 
       if query.owner_id
         finder = finder.with_user_id(query.owner_id)
@@ -22,9 +21,9 @@ module Expenses
         finder = finder.with_expensed_at_to(query.to_date)
       end
 
-      data = finder.to_a.map { |attrs| Expense.new(attrs) }
+      limited_data = finder.with_limit(query.limit).with_offset(query.offset)
+      data = limited_data.to_a.map { |attrs| Expense.new(attrs) }
       Result.new(data, total_records: finder.count, limit: query.limit)
     end
-    # rubocop:enable Metrics/AbcSize, Metrics/MethodLength
   end
 end

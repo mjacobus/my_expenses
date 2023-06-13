@@ -3,20 +3,22 @@
 module Api
   module Expenses
     class IndexEndpoint < Endpoint
-      def create_response(request:) # rubocop:disable Lint/UnusedMethodArgument
-        # query = ExpensesQuery.new
-        #   .bellonging_to(actor)
-        #   .with_labels(request.params[:labels])
-        #   .without_lables(request.params[:not_labels])
-        #   .from(request.params[:from])
-        #   .to(request.params[:to])
-        #
-        # expenses = ExpensesGatewayService.new.find_by_query(query)
-        # data = DataSerializer.new(expenses)
-        # JsonResponse.new(data)
+      def initialize(actor:, finder: ::Expenses::ExpensesFinder.new)
+        super(actor: actor)
+        @finder = finder
+      end
 
-        data = Db::Expense.where(user_id: actor.id)
-        JsonResponse.new({ data: data })
+      def create_response(request:) # rubocop:disable Metrics/AbcSize
+        query = ::Expenses::ExpensesQuery.new
+          .with_owner_id(actor.id)
+          .with_from_date(request.params[:from])
+          .with_to_date(request.params[:to])
+          .with_limit(request.params[:limit])
+          .with_page(request.params[:page])
+
+        result = @finder.by_query(query)
+
+        IndexResponse.new(finder_result: result)
       end
     end
   end
