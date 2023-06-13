@@ -54,10 +54,12 @@ module Expenses
       with { |q| q.not_label_ids = ids }
     end
 
+    # TODO: Think of a better method name
     def with_from_date(date)
       with { |q| q.from_date = date }
     end
 
+    # TODO: Think of a better method name
     def with_to_date(date)
       with { |q| q.to_date = date }
     end

@@ -8,6 +8,7 @@ module Expenses
       attribute :id, :integer
       attribute :description, :string
       attribute :amount, :integer
+      attribute :expensed_at, :time
       attribute :created_at, :time
       attribute :updated_at, :time
     end
