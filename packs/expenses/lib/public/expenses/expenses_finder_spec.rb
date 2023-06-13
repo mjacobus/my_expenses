@@ -18,7 +18,8 @@ RSpec.describe Expenses::ExpensesFinder do
       result = finder.by_query(query)
 
       expect(result.data).to be_equal_to([from_ar(expected)])
-      expect(result.total).to eq(1)
+      expect(result.total_records).to eq(1)
+      expect(result.limit).to eq(100)
     end
 
     it 'filters expenses by from_date' do
@@ -30,7 +31,7 @@ RSpec.describe Expenses::ExpensesFinder do
 
         result = finder.by_query(query)
 
-        expect(result.total).to eq(1)
+        expect(result.total_records).to eq(1)
         expect(result.data).to be_equal_to([from_ar(expected)])
       end
     end
@@ -44,7 +45,7 @@ RSpec.describe Expenses::ExpensesFinder do
 
         result = finder.by_query(query)
 
-        expect(result.total).to eq(1)
+        expect(result.total_records).to eq(1)
         expect(result.data).to be_equal_to([from_ar(expected)])
       end
     end
