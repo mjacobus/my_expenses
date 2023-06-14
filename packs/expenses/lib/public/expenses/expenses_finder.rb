@@ -23,7 +23,7 @@ module Expenses
 
       limited_data = finder.with_limit(query.limit).with_offset(query.offset)
       data = limited_data.to_a.map { |attrs| Expense.new(attrs) }
-      Result.new(data, total_records: finder.count, limit: query.limit, page: query.page)
+      Result.new(data, count: finder.count, limit: query.limit, page: query.page)
     end
   end
 end

@@ -16,7 +16,7 @@ module Api
       def format_response(finder_response)
         {
           meta: {
-            total_records: finder_response.total_records,
+            count: finder_response.count,
             limit: finder_response.limit,
             page: finder_response.page
           },
