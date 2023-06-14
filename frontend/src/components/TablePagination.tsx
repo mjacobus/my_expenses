@@ -20,7 +20,7 @@ export default function CustomPagination({
     _event: React.MouseEvent<HTMLButtonElement> | null,
     page: number
   ) {
-    setPage(page);
+    setPage(page + 1);
   }
 
   function onRowsPerPageChange(event: React.ChangeEvent<HTMLInputElement>) {
@@ -31,7 +31,7 @@ export default function CustomPagination({
     <TablePagination
       component="div"
       count={count}
-      page={page}
+      page={page - 1}
       rowsPerPage={perPage}
       onPageChange={onPageChange}
       onRowsPerPageChange={onRowsPerPageChange}

@@ -51,10 +51,10 @@ export default function IndexPage() {
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(() => {
     if (queryParams.page) {
-      return parseInt(queryParams.page) - 1;
+      return parseInt(queryParams.page);
     }
 
-    return 0; // it starts at 0
+    return 1;
   });
   const [perPage, setPerPage] = useState<number>(() => {
     if (queryParams.perPage) {
@@ -67,7 +67,7 @@ export default function IndexPage() {
 
   const fetchData = async () => {
     const response = await api.fetchExpenses({
-      page: page + 1,
+      page: page,
       limit: perPage,
     });
     storage.set("perPage", (perPage || "").toString());
@@ -92,7 +92,7 @@ export default function IndexPage() {
 
   const setPageWrapper = (page: number) => {
     setPage(page);
-    setSearchParams(newSearchParams(searchParams, { page: page + 1 }));
+    setSearchParams(newSearchParams(searchParams, { page: page }));
   };
 
   const setPerPageWrapper = (perPage: number) => {
