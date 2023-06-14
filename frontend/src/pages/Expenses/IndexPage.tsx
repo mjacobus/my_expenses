@@ -48,7 +48,7 @@ export default function IndexPage() {
       page: page + 1,
       limit: perPage,
     });
-    storage.set("perPage", perPage);
+    storage.set("perPage", (perPage || "").toString());
     if (response) {
       setExpenses(response.data);
       setCount(response.meta.count);
@@ -75,7 +75,7 @@ export default function IndexPage() {
         setPage={setPage}
         count={count}
         page={page}
-        perPage={perPage}
+        perPage={perPage || 10}
       />
       <Expenses expenses={expenses} />
       <Pagination
@@ -83,7 +83,7 @@ export default function IndexPage() {
         setPage={setPage}
         count={count}
         page={page}
-        perPage={perPage}
+        perPage={perPage || 10}
       />
     </Page>
   );

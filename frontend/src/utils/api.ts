@@ -28,8 +28,8 @@ async function fetchUserSession(): Promise<UserData | null> {
 }
 
 interface FetchExpensesProps {
-  limit?: number;
-  page?: number;
+  limit: number | null;
+  page: number | null;
 }
 
 async function fetchExpenses({
