@@ -4,6 +4,7 @@ import api from "../../utils/api";
 import { create } from "../../utils/localStorage";
 import DataGrid from "../../components/DataGrid";
 import Pagination from "../../components/TablePagination";
+import ListFilter from "./ListFilter";
 import Expense from "../../types/Expense";
 
 import { useSearchParams } from "react-router-dom";
@@ -102,6 +103,7 @@ export default function IndexPage() {
 
   return (
     <Page>
+      <ListFilter />
       <Pagination
         setPerPage={setPerPageWrapper}
         setPage={setPageWrapper}
