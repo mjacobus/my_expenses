@@ -1,9 +1,12 @@
 import React, { useState, useEffect } from "react";
 import Alert from "@mui/material/Alert";
 import api from "../../utils/api";
+import { create } from "../../utils/localStorage";
 import DataGrid from "../../components/DataGrid";
 import Pagination from "../../components/TablePagination";
 import Expense from "../../types/Expense";
+
+const storage = create("expenses-preferences");
 
 function Expenses({ expenses }: { expenses: Expense[] }) {
   const rows = expenses.map((expense) => ({
@@ -37,7 +40,7 @@ export default function IndexPage() {
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [loading, setLoading] = useState(true);
   const [page, setPage] = useState(0); // it starts at 0
-  const [perPage, setPerPage] = useState(10);
+  const [perPage, setPerPage] = useState(storage.getInt("perPage", 100));
   const [count, setCount] = useState(1);
 
   const fetchData = async () => {
@@ -45,6 +48,7 @@ export default function IndexPage() {
       page: page + 1,
       limit: perPage,
     });
+    storage.set("perPage", perPage);
     if (response) {
       setExpenses(response.data);
       setCount(response.meta.count);
