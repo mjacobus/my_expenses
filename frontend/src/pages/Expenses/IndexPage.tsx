@@ -6,6 +6,8 @@ import DataGrid from "../../components/DataGrid";
 import Pagination from "../../components/TablePagination";
 import Expense from "../../types/Expense";
 
+import { useSearchParams } from "react-router-dom";
+
 const storage = create("expenses-preferences");
 
 function Expenses({ expenses }: { expenses: Expense[] }) {
@@ -36,11 +38,31 @@ function Page({ children }: { children: React.ReactNode }) {
   );
 }
 
+function newSearchParams(searchParams: URLSearchParams, newValues = {}) {
+  const values = Object.fromEntries(searchParams);
+  Object.assign(values, newValues);
+  return values;
+}
+
 export default function IndexPage() {
+  const [searchParams, setSearchParams] = useSearchParams();
+  const queryParams = newSearchParams(searchParams);
   const [expenses, setExpenses] = useState<Expense[]>([]);
   const [loading, setLoading] = useState(true);
-  const [page, setPage] = useState(0); // it starts at 0
-  const [perPage, setPerPage] = useState(storage.getInt("perPage", 100));
+  const [page, setPage] = useState(() => {
+    if (queryParams.page) {
+      return parseInt(queryParams.page) - 1;
+    }
+
+    return 0; // it starts at 0
+  });
+  const [perPage, setPerPage] = useState<number>(() => {
+    if (queryParams.perPage) {
+      return parseInt(queryParams.perPage);
+    }
+
+    return storage.getInt("perPage", 100) || 100;
+  });
   const [count, setCount] = useState(1);
 
   const fetchData = async () => {
@@ -68,19 +90,29 @@ export default function IndexPage() {
     );
   }
 
+  const setPageWrapper = (page: number) => {
+    setPage(page);
+    setSearchParams(newSearchParams(searchParams, { page: page + 1 }));
+  };
+
+  const setPerPageWrapper = (perPage: number) => {
+    setPerPage(perPage);
+    setSearchParams(newSearchParams(searchParams, { perPage }));
+  };
+
   return (
     <Page>
       <Pagination
-        setPerPage={setPerPage}
-        setPage={setPage}
+        setPerPage={setPerPageWrapper}
+        setPage={setPageWrapper}
         count={count}
         page={page}
         perPage={perPage || 10}
       />
       <Expenses expenses={expenses} />
       <Pagination
-        setPerPage={setPerPage}
-        setPage={setPage}
+        setPerPage={setPerPageWrapper}
+        setPage={setPageWrapper}
         count={count}
         page={page}
         perPage={perPage || 10}
