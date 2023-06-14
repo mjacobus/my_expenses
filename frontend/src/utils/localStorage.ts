@@ -26,13 +26,15 @@ export default class LocalStorage {
   }
 
   getInt(key: string, defaultValue: number | null = null): number | null {
-    const value = this.get(key);
+    let value: any = this.get(key);
 
     if (value === null) {
       return defaultValue;
     }
 
-    return parseInt(value);
+    value = parseInt(value);
+
+    return isNaN(value) ? defaultValue : value;
   }
 }
 
