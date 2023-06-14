@@ -41,7 +41,7 @@ module Db
     end
 
     def fields
-      %i[id description amount created_at updated_at]
+      %i[id description amount expensed_at created_at updated_at]
     end
   end
 end

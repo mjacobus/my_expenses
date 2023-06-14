@@ -17,7 +17,8 @@ module Api
         {
           meta: {
             total_records: finder_response.total_records,
-            limit: finder_response.limit
+            limit: finder_response.limit,
+            page: finder_response.page
           },
           data: finder_response.data.map do |expense|
             to_hash(expense)

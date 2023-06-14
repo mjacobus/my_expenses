@@ -52,7 +52,7 @@ RSpec.describe Expenses::ExpensesFinder do
   end
 
   def from_ar(record)
-    attributes = %i[id description amount created_at updated_at]
+    attributes = %i[id description expensed_at amount created_at updated_at]
     Expenses::Expense.new(record.attributes.symbolize_keys.slice(*attributes))
   end
 end
