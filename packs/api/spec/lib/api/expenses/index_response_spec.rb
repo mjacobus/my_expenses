@@ -10,7 +10,7 @@ RSpec.describe Api::Expenses::IndexResponse do
 
   before do
     allow(finder_result).to receive(:data).and_return([expense])
-    allow(finder_result).to receive(:total_records).and_return('total-records')
+    allow(finder_result).to receive(:count).and_return('total-records')
     allow(finder_result).to receive(:limit).and_return('limit')
     allow(finder_result).to receive(:page).and_return('page')
 
@@ -36,7 +36,7 @@ RSpec.describe Api::Expenses::IndexResponse do
           }
         ],
         meta: {
-          total_records: 'total-records',
+          count: 'total-records',
           limit: 'limit',
           page: 'page'
         }
