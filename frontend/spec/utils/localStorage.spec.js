@@ -45,5 +45,11 @@ describe("LocalStorage", () => {
 
       expect(getInt("theNumber")).toBe(10);
     });
+
+    it("returns default when isNaN", () => {
+      set("theNumber", "not a number");
+
+      expect(getInt("theNumber", 10)).toBe(10);
+    });
   });
 });
